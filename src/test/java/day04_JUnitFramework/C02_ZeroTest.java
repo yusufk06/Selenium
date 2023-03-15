@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 
@@ -14,8 +15,14 @@ public class C02_ZeroTest {
 
     @Test
     public void test01() throws InterruptedException {
+        ChromeOptions ops = new ChromeOptions();
+        ops.addArguments("--remote-allow-origins=*");
+
         WebDriverManager.chromedriver().setup();
-        WebDriver driver= new ChromeDriver();
+        WebDriver driver= new ChromeDriver(ops);
+
+
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().window().maximize();
 
